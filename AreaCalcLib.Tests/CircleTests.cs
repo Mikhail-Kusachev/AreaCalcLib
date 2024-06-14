@@ -29,7 +29,7 @@ public class CircleTests
     }
 
     [Test]
-    public void Circle_WrongArgumentsNumber()
+    public void WrongArgumentsNumber()
     {
         var shapeFactory = new ShapeFactory();
         Assert.That(() => shapeFactory.Create(new double[] { 1, 1 }),

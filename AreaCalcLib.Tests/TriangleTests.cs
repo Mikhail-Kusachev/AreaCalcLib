@@ -3,7 +3,7 @@ namespace AreaCalcLib.Tests;
 public class TriangleTests
 {
     [Test]
-    public void Shape_CalculateArea_Triangle_3_4_5_return_6()
+    public void Triangle_CalculateArea_3_4_5_return_6()
     {
         var shapeFactory = new ShapeFactory();
         var shape = shapeFactory.Create(new double[] { 3, 4, 5 });
@@ -13,7 +13,7 @@ public class TriangleTests
     }
 
     [Test]
-    public void TriangleConstructor_ZeroSide()
+    public void Triangle_ZeroSide()
     {
         var shapeFactory = new ShapeFactory();
         Assert.That(() => shapeFactory.Create(new double[] { 5, 12, 0 }),
@@ -21,7 +21,15 @@ public class TriangleTests
     }
 
     [Test]
-    public void TriangleConstructor_NegativeSide()
+    public void Triangle_ImpossibleSideEnumeration()
+    {
+        var shapeFactory = new ShapeFactory();
+        Assert.That(() => shapeFactory.Create(new double[] { 1, 1, 2 }),
+            Throws.Exception.TypeOf<ArgumentException>());
+    }
+    
+    [Test]
+    public void Triangle_NegativeSide()
     {
         var shapeFactory = new ShapeFactory();
         Assert.That(() => shapeFactory.Create(new double[] { 5, -12, 13 }),
@@ -29,7 +37,7 @@ public class TriangleTests
     }
 
     [Test]
-    public void IsRight_Triangle_3_4_5_return_true()
+    public void Triangle_IsRight_3_4_5_return_true()
     {
         var shapeFactory = new ShapeFactory();
         var shape = shapeFactory.Create(new double[] { 3.0, 4.0, 5.0 });
@@ -39,7 +47,7 @@ public class TriangleTests
     }
 
     [Test]
-    public void IsRight_Triangle_2_3_4_return_false()
+    public void Triangle_IsRight_2_3_4_return_false()
     {
         var shapeFactory = new ShapeFactory();
         var shape = shapeFactory.Create(new double[] { 2, 3.111, 4.255 });
